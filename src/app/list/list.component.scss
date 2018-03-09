@@ -1,0 +1,33 @@
+@import "../../styles";
+
+#waste-list {
+  mat-card{
+    background-color: white;
+    color:$main-green-darker;
+  }
+
+  button {
+    color:white;
+    background-color: $main-blue;
+  }
+
+}
+.list{
+  padding: 30px;
+  cursor: move;
+  length: auto;
+  left: 20px;
+  top: 100px;
+}
+
+#deleteButton {
+  float:right;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.remove{
+  color:red;
+}

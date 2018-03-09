@@ -1,0 +1,17 @@
+<article id="address-bar">
+  <mat-card>
+    <mat-card-content>
+  <form id="noMobileForm" (submit) = 'changeAddress()'>
+    <mat-form-field id="noMobileField">
+      <input (keyup)='autocompleteSearch()' type='text' [(ngModel)]="address" name="address" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Osoite">
+      <mat-autocomplete autoActiveFirstOption #auto='matAutocomplete'>
+        <mat-option *ngFor='let option of apiService.options' [value]='option'>
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="accent"><mat-icon>pin_drop</mat-icon></button>
+  </form>
+</mat-card-content>
+</mat-card>
+</article>

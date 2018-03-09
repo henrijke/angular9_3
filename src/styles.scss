@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+$main-blue: #1A6C8C;
+$main-green: #89B732;
+$main-green-darker: #539D38;
+$main-green-lighter: #C0CF3A;
+$main-blue-lighter: #1A8A6D;
+
+html, body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+.pointer{
+    cursor:pointer;
+}

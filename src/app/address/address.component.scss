@@ -1,0 +1,11 @@
+form{
+  display: flex;
+  mat-form-field{
+    flex: 3;
+  }
+  button{
+    max-height:45px;
+    margin-left: 5px;
+    padding-top: 3px;
+  }
+}

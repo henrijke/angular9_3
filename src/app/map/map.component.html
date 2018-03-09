@@ -1,0 +1,23 @@
+<article>
+  <agm-map #gm [latitude]="this.apiService.userLat" [longitude]="this.apiService.userLng" [zoom]=12>
+    <agm-marker *ngFor="let point of apiService.recyclingPoints" [latitude]=point.lat [longitude]=point.lng
+              (markerClick)="openIW(infoWindow)" [iconUrl]="test(point)">
+    <agm-info-window #infoWindow>
+        <div class="recyclingPointWindow">
+            <p class="header">{{point.name}}</p>
+            <div class="flexThis"><mat-icon>location_on</mat-icon><p class="subheader">{{point.address}}</p></div>
+            <p class="subheader">Kierrätyspaikasta huolehtii: {{point.administrator}}</p>
+            <hr>
+            <p class="header">Täällä voit kierrättää seuraavia jätteitä</p>
+            <ul *ngFor="let waste of point.type_id ">
+                <li>{{waste | wastename}}</li>
+            </ul>
+            <hr>
+            <div class="flexThis"><mat-icon>access_time</mat-icon><p class="flexText">Aukioloajat: {{point.openingTime}}</p></div>
+            <div class="flexThis"><mat-icon>contact_phone</mat-icon><p class="flexText">Yhteystiedot: {{point.info}}</p></div>
+        </div>
+    </agm-info-window>
+  </agm-marker>
+</agm-map>
+<button id="hiderButton" mat-fab (click)="hideList()"><mat-icon>check_box</mat-icon></button>
+</article>

@@ -1,0 +1,80 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav #sidenav align="end" [(opened)]="this.apiService.sideBarOpen" class="example-sidenav" mode="over">
+    <mat-icon class='pointer' (click)="this.apiService.openSideNav()" style="float:right;">close</mat-icon>
+    <h3>Päivän vinkki</h3>
+    <img class='tip-pic' src='../assets/images/mascot.png'/>
+    <p>Tiesitkö että juomalasit kuuluvat sekäjätteeseen <br> eivätkä lasinkeräykseen.</p>
+    <hr>
+    <h3>Merkit:</h3>
+    <table>
+      <tr>
+        <td><img src="../assets/marker-icons/100.png"></td>
+        <td>Sekäjäte</td>
+        <td><img src="../assets/marker-icons/101.png"></td>
+        <td>Bio- ja puutarhajäte</td>
+      </tr>
+      <tr>
+        <td><img src="../assets/marker-icons/102.png"></td>
+        <td>Energiajäte</td>
+        <td><img src="../assets/marker-icons/103.png"></td>
+        <td>Paperi</td>
+      </tr>
+      <tr>
+        <td><img src="../assets/marker-icons/104.png"></td>
+        <td>Pahvi</td>
+        <td><img src="../assets/marker-icons/105.png"></td>
+        <td>Kartonki</td>
+      </tr>
+      <tr>
+        <td><img src="../assets/marker-icons/106.png"></td>
+        <td>Metalli</td>
+        <td><img src="../assets/marker-icons/107.png"></td>
+        <td>Lasi</td>
+      </tr>
+      <tr>
+        <td><img src="../assets/marker-icons/108.png"></td>
+        <td>Vaarallinen jäte</td>
+        <td><img src="../assets/marker-icons/109.png"></td>
+        <td>Sähkölaitteet (SER)</td>
+      </tr>
+      <tr>
+        <td><img src="../assets/marker-icons/110.png"></td>
+        <td>Paristot</td>
+        <td><img src="../assets/marker-icons/111.png"></td>
+        <td>Muovi</td>
+      </tr>
+      <tr>
+        <td><img src="../assets/marker-icons/113.png"></td>
+        <td>Tekstiili</td>
+        <td><img src="../assets/marker-icons/114.png"></td>
+        <td>Muu jäte</td>
+      </tr>
+      <tr>
+        <td><img src="../assets/marker-icons/115.png"></td>
+        <td>Akut</td>
+        <td><img src="../assets/marker-icons/116.png"></td>
+        <td>Lamput</td>
+      </tr>
+      <tr>
+        <td><img src="../assets/marker-icons/117.png"></td>
+        <td>Puu</td>
+        <td><img src="../assets/marker-icons/118.png"></td>
+        <td>Kyllästetty puu</td>
+      </tr>
+      <tr>
+        <td><img src="../assets/marker-icons/119.png"></td>
+        <td>Rakennus- ja purkujäte</td>
+        <td><img src="../assets/marker-icons/000.png"></td>
+        <td>Useita kierrätyspisteitä</td>
+      </tr>
+    </table>
+  </mat-sidenav>
+  <div class="example-sidenav-content">
+    <app-map></app-map>
+    <app-header></app-header>
+    <app-address></app-address>
+    <app-list></app-list>
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
