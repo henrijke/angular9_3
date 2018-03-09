@@ -51,12 +51,19 @@ app-header {
 
   }
 }
-
-.tip-pic{
-  float:left;
-  height:75px;
-  width:auto;
+.tip{
+  height: 80px;
+  .tip-pic{
+    float:left;
+    height:75px;
+    width:auto;
+  }
+  p{
+    padding-top: 20px;
+    margin-left: 10px;
+  }
 }
+
 .cross{
   cursor:pointer;
 }
