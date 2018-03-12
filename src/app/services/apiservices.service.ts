@@ -13,7 +13,7 @@ export class ApiservicesService {
   // Google API osoitteet
   googleGeoCodingApiAddress = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
   googleAutocompleteAddress = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?';
-  googleDirectionsAddress = 'https://maps.googleapis.com/maps/api/directions/json?origin=Ripusuontie&destination=Kamppi&mode=transit&language=fi&key=AIzaSyA3Ea63LJv9QCDzp_SFIbcexot31x9px2Q';
+  googleDirectionsAddress = 'https://maps.googleapis.com/maps/api/directions/json?';
 
   // Kierrätys.info API osoite
   kierratysInfoApiAddress = 'https://kierratys.info/1.5/genxml.php';
@@ -40,6 +40,10 @@ export class ApiservicesService {
   // Pitää sisällään käyttäjän valitsemien roskien kategorioiden ID:t
   recyclingList = [];
 
+  // Reittidata ja boolean onko reitti haettu
+  routeSearched = false;
+  routeData: any;
+
   constructor(private http: HttpClient) {}
 
   /* Google Directions --> Haetaan reittiohjeet osoitteesta valittuun kohteeseen.
@@ -49,8 +53,15 @@ export class ApiservicesService {
   */
   getTransportRoute(destination, mode) {
       this.http.get(this.googleDirectionsAddress + 'origin=' + this.address + '&destination=' + destination + '&mode=' + mode + '&language=fi&key=' + this.googleApiKey).subscribe( (data) => {
+        this.routeData = data;
         console.log(data);
+        this.routeSearched = true;
       });
+  }
+
+  // Sulkee info-windowin reittiosuuden
+  closeRouteWindow() {
+    this.routeSearched = false;
   }
 
   // Handlaa sidenavin avaamisen.
@@ -71,8 +82,6 @@ export class ApiservicesService {
     this.address = address;
     if (address.length > 0) {
       this.http.get(this.googleGeoCodingApiAddress + address + '&key=' + this.googleApiKey).subscribe( (data) => {
-        /*this.locationLat = data['results'][0].geometry.location.lat;
-        this.locationLng = data['results'][0].geometry.location.lng;*/
         this.userLat = data['results'][0].geometry.location.lat;
         this.userLng = data['results'][0].geometry.location.lng;
         this.getRecyclingPoints();
@@ -172,5 +181,18 @@ export class ApiservicesService {
     marker.attributes.paikka_id.nodeValue,
     marker.attributes.osoite.nodeValue, marker.attributes.aukiolo.nodeValue,
      marker.attributes.yhteys.nodeValue, marker.attributes.yllapitaja.nodeValue));
+  }
+  // Katsoo onko selain mobiilikoossa
+  isItMobile = () => {
+      if (window.innerWidth < 500) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+  // piilottaa listan...
+  hideList() {
+    document.getElementById('list').classList.toggle('hidden');
+    document.getElementById('list').classList.toggle('showed');
   }
 }

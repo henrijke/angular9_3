@@ -1,4 +1,4 @@
-<article id="address-bar">
+<article *ngIf="!apiService.isItMobile()" id="address-bar">
   <mat-card>
     <mat-card-content>
   <form id="noMobileForm" (submit) = 'changeAddress()'>

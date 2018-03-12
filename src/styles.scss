@@ -7,6 +7,74 @@ $main-green-darker: #539D38;
 $main-green-lighter: #C0CF3A;
 $main-blue-lighter: #1A8A6D;
 
+@mixin trashbox($color){
+  background-color: $color;
+  border-radius: 15px;
+  padding:5px;
+  color:white;
+}
+.color_100{
+  @include trashbox(#4D4D4D);
+}
+.color_101{
+  @include trashbox(#C1BCB2);
+}
+.color_102{
+  @include trashbox(#8B8156);
+}
+.color_103{
+  @include trashbox(#9E205D);
+}
+.color_104{
+  @include trashbox(#2242E2);
+}
+.color_105{
+  @include trashbox(#347896);
+}
+.color_106{
+  @include trashbox(#99CAF0);
+}
+.color_107{
+  @include trashbox(#D2272A);
+}
+.color_108{
+  @include trashbox(#277D0C);
+}
+.color_109{
+  @include trashbox(#F0C0E2);
+}
+.color_110{
+  @include trashbox(#d6d31d);
+}
+.color_111{
+  @include trashbox(#D5D098);
+}
+.color_113{
+  @include trashbox(#B1EA49);
+}
+.color_114{
+  @include trashbox(#FBB03B);
+}
+.color_115{
+  @include trashbox(#29ABE2);
+}
+.color_116{
+  @include trashbox(#C556AD);
+}
+.color_117{
+  @include trashbox(#D57170);
+}
+.color_118{
+  @include trashbox(#bababa);
+}
+.color_119{
+  @include trashbox(#754C24);
+}
+
+.no-style{
+list-style-type: none;
+}
+
 html, body {
     margin: 0;
     font-family: 'Raleway', sans-serif;

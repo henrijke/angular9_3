@@ -60,7 +60,7 @@ import { AddressComponent } from './address/address.component';
       AngularDraggableModule,
       MatCardModule,
   ],
-  providers: [ApiservicesService, ListServiceService],
+  providers: [ApiservicesService, ListServiceService, MapComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

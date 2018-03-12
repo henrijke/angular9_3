@@ -3,6 +3,7 @@ import {ListServiceService} from '../services/list-service.service';
 import {FormControl} from '@angular/forms';
 import {ApiservicesService} from '../services/apiservices.service';
 import {TrashName} from '../models/trash-name';
+import {MapComponent} from '../map/map.component';
 
 @Component({
   selector: 'app-list',
@@ -19,7 +20,7 @@ export class ListComponent implements OnInit {
 
   trashNameList = [];
 
-  constructor(private listService: ListServiceService, public apiService: ApiservicesService) { }
+  constructor(private listService: ListServiceService, public apiService: ApiservicesService, public map: MapComponent) { }
   ngOnInit() {
   }
 
@@ -30,6 +31,10 @@ export class ListComponent implements OnInit {
       list.push(this.listService.nameToType(array.type));
     }
     this.apiService.getWasteByRecycleList(list);*/
+    if (this.map.infoWind) {
+        this.map.infoWind.close();
+        this.map.infoWind = null;
+    }
     this.apiService.getRecyclingPoints();
   }
 

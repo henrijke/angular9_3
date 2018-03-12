@@ -1,5 +1,5 @@
 <div id="header">
-  <div *ngIf="isMobile">
+  <div class='headerMobile' *ngIf="apiService.isItMobile()">
     <mat-toolbar class="header-toolbar">
       <mat-toolbar-row>
         <span>Kierrätin.fi</span>
@@ -7,7 +7,7 @@
         <mat-icon (click)="openSideNav()" class="example-icon settings_icon pointer">settings</mat-icon>
       </mat-toolbar-row>
       <mat-toolbar-row>
-        <form (submit) = 'changeAddress()'>
+        <form (ngSubmit) = 'changeAddress()'>
           <mat-form-field>
             <input (keyup)='autocompleteSearch()' type='text' [(ngModel)]="address" name="address" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Osoite">
             <mat-autocomplete autoActiveFirstOption #auto='matAutocomplete'>
@@ -22,23 +22,10 @@
     </mat-toolbar>
   </div>
 
-  <div *ngIf="!isMobile">
+  <div *ngIf="!apiService.isItMobile()">
     <mat-toolbar class="header-toolbar desktop-header">
       <mat-toolbar-row>
         <span>Kierrätin.fi</span>
-        <!--
-        <form id="noMobileForm" (submit) = 'changeAddress()'>
-          <mat-form-field id="noMobileField">
-            <input (keyup)='autocompleteSearch()' type='text' [(ngModel)]="address" name="address" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Osoite">
-            <mat-autocomplete autoActiveFirstOption #auto='matAutocomplete'>
-              <mat-option *ngFor='let option of apiService.options' [value]='option'>
-                {{option}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-          <button type="submit" mat-raised-button color="accent"><mat-icon>pin_drop</mat-icon></button>
-        </form>
-      -->
         <span class="example-spacer"></span>
         <mat-icon (click)="openSideNav()" class="example-icon settings_icon pointer">settings</mat-icon>
       </mat-toolbar-row>

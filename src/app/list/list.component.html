@@ -1,14 +1,19 @@
-<article id="waste-list">
-  <mat-card class="" id="list">
-    <mat-card-title> Roskalista </mat-card-title>
+<article id="waste-list" class="articleIsMobile{{apiService.isItMobile()}}">
+
+  <mat-card class="showed"  id="list" >
+    <button *ngIf="apiService.isItMobile()" class='mobileButton' (click)="apiService.hideList()">Roskalista <mat-icon class='remove'>import_export</mat-icon></button>
+    <mat-card-title *ngIf="!apiService.isItMobile()"> Roskalista </mat-card-title>
     <mat-card-content>
       <mat-expansion-panel *ngFor="let listElement of trashArray | listPipe">
           <mat-expansion-panel-header>
             <mat-panel-title>
           {{ trashArray[listElement].type }}
         </mat-panel-title>
+        <mat-panel-description>
+          {{trashArray[listElement].length}}
+        </mat-panel-description>
       </mat-expansion-panel-header>
-        <ul *ngFor="let trash of trashArray[listElement].trashName">
+        <ul class='no-style' *ngFor="let trash of trashArray[listElement].trashName">
             <li class='pointer' (click)="remove(trash, listElement)">{{trash}} <mat-icon class='remove'>delete</mat-icon></li>
         </ul>
     </mat-expansion-panel>

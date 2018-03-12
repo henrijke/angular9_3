@@ -9,13 +9,18 @@ import { ListServiceService } from '../services/list-service.service';
 })
 export class MapComponent implements OnInit {
 
-  constructor(public apiService: ApiservicesService, public listService: ListServiceService) {
-  }
+  constructor(public apiService: ApiservicesService, public listService: ListServiceService) {}
 
   infoWind;
 
   ngOnInit() {
     this.apiService.getUserCoordinates();
+  }
+
+  getRouteHere(destination) {
+    this.infoWind.close();
+    this.infoWind = null;
+    this.apiService.getTransportRoute(destination, 'transit');
   }
 
   openIW (data) {
@@ -24,15 +29,11 @@ export class MapComponent implements OnInit {
     }
     this.infoWind = data;
   }
-  test (point) {
+  iconUrler (point) {
         if (point.type_id.length > 1) {
           return './assets/marker-icons/000.png';
         } else {
             return './assets/marker-icons/' + point.type_id[0] + '.png';
         }
   }
-
-hideList() {
-  document.querySelector('#list').classList.toggle('hidden');
-}
 }

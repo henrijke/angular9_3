@@ -76,7 +76,7 @@
     <app-map></app-map>
     <app-header></app-header>
     <app-address></app-address>
-    <app-list></app-list>
+    <app-list class="mobile{{apiService.isItMobile()}}"></app-list>
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>

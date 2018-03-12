@@ -10,21 +10,11 @@ import {FormControl} from '@angular/forms';
 export class AddressComponent implements OnInit {
   myControl: FormControl = new FormControl();
   address = '';
-  isMobile = false;
   options = [];
   data;
   constructor(public apiService: ApiservicesService) { }
 
   ngOnInit() {
-    window.addEventListener('resize', this.isItMobile);
-  }
-  isItMobile = () => {
-      if (window.innerWidth < 500) {
-          this.isMobile = true;
-      } else {
-          this.isMobile = false;
-      }
-      console.log(this.isMobile);
   }
 
   search = () => {
