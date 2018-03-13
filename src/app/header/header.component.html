@@ -1,12 +1,7 @@
 <div id="header">
   <div class='headerMobile' *ngIf="apiService.isItMobile()">
     <mat-toolbar class="header-toolbar">
-      <mat-toolbar-row>
-        <span>Kierrätin.fi</span>
-        <span class="example-spacer"></span>
-        <mat-icon (click)="openSideNav()" class="example-icon settings_icon pointer">settings</mat-icon>
-      </mat-toolbar-row>
-      <mat-toolbar-row>
+        <mat-toolbar-row>
         <form (ngSubmit) = 'changeAddress()'>
           <mat-form-field>
             <input (keyup)='autocompleteSearch()' type='text' [(ngModel)]="address" name="address" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Osoite">
@@ -18,6 +13,8 @@
           </mat-form-field>
           <button type="submit" mat-raised-button color="accent"><mat-icon>pin_drop</mat-icon></button>
         </form>
+        <span class="example-spacer"></span>
+        <mat-icon id="noMobileSettingsIcon" (click)="openSideNav()" class="example-icon settings_icon pointer">settings</mat-icon>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
@@ -25,7 +22,7 @@
   <div *ngIf="!apiService.isItMobile()">
     <mat-toolbar class="header-toolbar desktop-header">
       <mat-toolbar-row>
-        <span>Kierrätin.fi</span>
+        <img id='logo' src="../assets/images/logo.png"/>
         <span class="example-spacer"></span>
         <mat-icon (click)="openSideNav()" class="example-icon settings_icon pointer">settings</mat-icon>
       </mat-toolbar-row>

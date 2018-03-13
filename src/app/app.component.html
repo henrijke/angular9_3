@@ -2,7 +2,7 @@
 <mat-sidenav-container class="example-container" autosize>
   <mat-sidenav #sidenav align="end" [(opened)]="this.apiService.sideBarOpen" class="example-sidenav" mode="over">
     <mat-icon class='pointer' (click)="this.apiService.openSideNav()" style="float:right;">close</mat-icon>
-    <h3>Päivän vinkki</h3>
+    <h3>Lassen vinkki</h3>
     <div class='tip'>
     <img class='tip-pic' src='../assets/images/mascot.png'/>
     <p>Tiesitkö että juomalasit kuuluvat sekäjätteeseen <br> eivätkä lasinkeräykseen.</p>
@@ -71,6 +71,8 @@
         <td>Useita kierrätyspisteitä</td>
       </tr>
     </table>
+    <p> Sivuston on vuonna 2018 hiellä ja verellä tehnyt</p>
+    <p> Sami Varis ja Henri Kekkonen.</p>
   </mat-sidenav>
   <div class="example-sidenav-content">
     <app-map></app-map>

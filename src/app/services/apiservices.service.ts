@@ -44,13 +44,19 @@ export class ApiservicesService {
   routeSearched = false;
   routeData: any;
 
+  // Onko roskalista mobiililla piilotettu
+  listMobileHidden = false;
+
+  infoWind = null;
+
   constructor(private http: HttpClient) {}
 
   /* Google Directions --> Haetaan reittiohjeet osoitteesta valittuun kohteeseen.
   *  Destination = päämäärän osoite
   *  Mode = Liikkumisen tyyppi (driving, bicycling, walking ja transit)
   *  Transit modelle voi antaa myös lisäparametreiksi departure_time tai arrival_time (defaulttaa departure_timen tähän hetkeen jos ei annettu)
-  */
+  EI KÄYTÖSSÄ:-)
+
   getTransportRoute(destination, mode) {
       this.http.get(this.googleDirectionsAddress + 'origin=' + this.address + '&destination=' + destination + '&mode=' + mode + '&language=fi&key=' + this.googleApiKey).subscribe( (data) => {
         this.routeData = data;
@@ -58,7 +64,7 @@ export class ApiservicesService {
         this.routeSearched = true;
       });
   }
-
+*/
   // Sulkee info-windowin reittiosuuden
   closeRouteWindow() {
     this.routeSearched = false;
@@ -71,6 +77,7 @@ export class ApiservicesService {
 
   // Haetaan käyttäjän koordinaatit selaimen GPS:n ja Google Places APIn avulla.
   getUserCoordinates() {
+    console.log('koortinaatit');
     navigator.geolocation.getCurrentPosition( (location) => {
       this.userLat = location.coords.latitude;
       this.userLng = location.coords.longitude;
@@ -118,7 +125,8 @@ export class ApiservicesService {
               if (key === false && point.place_id === marker.attributes.paikka_id.nodeValue) {
                   point.type_id.push(marker.attributes.laji_id.nodeValue);
                   key = true;
-              }}
+              }
+          }
           if (!key) {
               this.createNewRecyclingPoint(marker);
           }
@@ -154,7 +162,7 @@ export class ApiservicesService {
 
   // Haetaan kierrätys pisteet tällä funktiolla jos roskalistassa ei ole yhtään roskaa.
   getRecyclingPointsWithoutList() {
-    this.http.get(this.kierratysInfoApiAddress + '?lat=' + Number(this.userLat) + '&lng=' + Number(this.userLng) + '&limit=20', {responseType: 'text'}).subscribe( response => {
+    this.http.get(this.kierratysInfoApiAddress + '?lat=' + Number(this.userLat) + '&lng=' + Number(this.userLng) + '&limit=1', {responseType: 'text'}).subscribe( response => {
         const parser = new DOMParser();
         const parsedData = parser.parseFromString(response, 'application/xml');
         this.xmlData = Array.prototype.slice.call(parsedData.querySelectorAll('marker'));
@@ -192,7 +200,21 @@ export class ApiservicesService {
   }
   // piilottaa listan...
   hideList() {
-    document.getElementById('list').classList.toggle('hidden');
-    document.getElementById('list').classList.toggle('showed');
+    console.log('Hidelist function');
+    if (this.isItMobile()) {
+      const article = document.getElementById('waste-list');
+      if (this.listMobileHidden) {
+        article.style.bottom = '0';
+      } else {
+        const articleHeight = article.offsetHeight - 60;
+        article.style.bottom = '-' + articleHeight + 'px';
+      }
+      this.listMobileHidden = !this.listMobileHidden;
+    } else {
+      const list = document.getElementById('list');
+      // vaihdetaan luokkaa
+      list.classList.toggle('hidden');
+      list.classList.toggle('showed');
+    }
   }
 }

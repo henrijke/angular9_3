@@ -5,8 +5,8 @@
     <agm-info-window #infoWindow>
         <div class="recyclingPointWindow">
             <p class="header">{{point.name}}</p>
-            <button (click)='getRouteHere(point.address)'>Reittiohjeet tänne:-)</button>
-            <div class="flexThis"><mat-icon>location_on</mat-icon><p class="subheader">{{point.address}}</p></div>
+            <!--<button (click)='getRouteHere(point.address)'>Reittiohjeet tänne:-)</button>-->
+            <div class="flexThis"><mat-icon class='icon-helper'>location_on</mat-icon><p class="subheader">{{point.address}}</p></div>
             <p class="subheader">Kierrätyspaikasta huolehtii: {{point.administrator}}</p>
             <hr>
             <p class="header">Täällä voit kierrättää seuraavia jätteitä</p>
@@ -14,10 +14,11 @@
                 <li class='color_{{waste}}'>{{waste | wastename}}</li>
             </ul>
             <hr>
-            <div class="flexThis"><mat-icon>access_time</mat-icon><p class="flexText">Aukioloajat: {{point.openingTime}}</p></div>
-            <div class="flexThis"><mat-icon>contact_phone</mat-icon><p class="flexText">Yhteystiedot: {{point.info}}</p></div>
+            <div class="flexThis"><mat-icon class='icon-helper'>access_time</mat-icon><p class="flexText">Aukioloajat: {{point.openingTime}}</p></div>
+            <div class="flexThis"><mat-icon class='icon-helper'>contact_phone</mat-icon><p class="flexText">Yhteystiedot: {{point.info}}</p></div>
         </div>
         <div class="routeWindow" *ngIf='apiService.routeSearched'>
+          <mat-icon style="float:right;" (click)="closeRouteWindow()">close</mat-icon>
           <h4>Mistä:{{apiService.routeData.routes[0].legs[0].start_address}}</h4>
           <h4>Minne:{{apiService.routeData.routes[0].legs[0].end_address}}</h4>
           <ul>

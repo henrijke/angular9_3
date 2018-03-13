@@ -1,39 +1,44 @@
 <article id="waste-list" class="articleIsMobile{{apiService.isItMobile()}}">
 
-  <mat-card class="showed"  id="list" >
-    <button *ngIf="apiService.isItMobile()" class='mobileButton' (click)="apiService.hideList()">Roskalista <mat-icon class='remove'>import_export</mat-icon></button>
-    <mat-card-title *ngIf="!apiService.isItMobile()"> Roskalista </mat-card-title>
-    <mat-card-content>
-      <mat-expansion-panel *ngFor="let listElement of trashArray | listPipe">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-          {{ trashArray[listElement].type }}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{trashArray[listElement].length}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-        <ul class='no-style' *ngFor="let trash of trashArray[listElement].trashName">
-            <li class='pointer' (click)="remove(trash, listElement)">{{trash}} <mat-icon class='remove'>delete</mat-icon></li>
-        </ul>
-    </mat-expansion-panel>
+<mat-card class="showed"  id="list" >
+<div id="mobileListHeader">
+  <button *ngIf="apiService.isItMobile()" class='mobileButton' (click)="apiService.hideList()">Roskalista <mat-icon class='remove'>import_export</mat-icon></button>
+  <mat-card-title *ngIf="!apiService.isItMobile()"> Roskalista </mat-card-title>
+
+<div id="mobileListHideThis">
+  <mat-card-content>
+    <mat-expansion-panel *ngFor="let listElement of trashArray | listPipe">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+        {{ trashArray[listElement].type }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{trashArray[listElement].length}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+      <ul class='no-style' *ngFor="let trash of trashArray[listElement].trashName">
+          <li class='pointer hover' (click)="remove(trash, listElement)">{{trash}}<mat-icon class='remove'>delete</mat-icon></li>
+      </ul>
+  </mat-expansion-panel>
 
 
-  <form #f="ngForm" (ngSubmit)='addList()' no>
-    <mat-form-field>
-      <input (keyup)='autocompleteList()' type="text" [(ngModel)]="trash" name="Trash" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Lisää uusi jäte"/>
-      <mat-autocomplete autoActiveFirstOption #auto='matAutocomplete'>
-        <mat-option *ngFor= 'let option of typeList' [value]='option'>
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <button type = 'submit' mat-raised-button><mat-icon>add_circle</mat-icon></button>
-  </form>
-  </mat-card-content>
-  <mat-card-actions>
-  <button (click)="sendRecyclingTypes()" mat-raised-button><mat-icon>pin_drop</mat-icon></button>
-  <button id="deleteButton" mat-mini-fab  (click)="emptyList()"><mat-icon>delete_forever</mat-icon></button>
-  </mat-card-actions>
+<form #f="ngForm" (ngSubmit)='addList()' no>
+  <mat-form-field>
+    <input (keyup)='autocompleteList()' type="text" [(ngModel)]="trash" name="Trash" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Lisää uusi jäte"/>
+    <mat-autocomplete autoActiveFirstOption #auto='matAutocomplete'>
+      <mat-option *ngFor= 'let option of typeList' [value]='option'>
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button type = 'submit' mat-raised-button><mat-icon>add_circle</mat-icon></button>
+</form>
+</mat-card-content>
+<mat-card-actions>
+<button id='mobileSend' (click)="sendRecyclingTypes()" mat-raised-button><mat-icon>pin_drop</mat-icon></button>
+<button id="deleteButton" mat-mini-fab  (click)="emptyList()"><mat-icon>delete_forever</mat-icon></button>
+</mat-card-actions>
+</div>
+</div>
   </mat-card>
 </article>

@@ -11,25 +11,46 @@ export class MapComponent implements OnInit {
 
   constructor(public apiService: ApiservicesService, public listService: ListServiceService) {}
 
-  infoWind;
 
-  ngOnInit() {
+  ngOnInit = () => {
     this.apiService.getUserCoordinates();
   }
 
-  getRouteHere(destination) {
-    this.infoWind.close();
-    this.infoWind = null;
-    this.apiService.getTransportRoute(destination, 'transit');
+  closeRouteWindow = () => {
+    this.apiService.closeRouteWindow();
   }
 
-  openIW (data) {
-    if (this.infoWind) {
-      this.infoWind.close();
+  closeWindow = () => {
+    console.log(this);
+    console.log('closeWindow1:' + this.apiService.infoWind);
+    if (this.apiService.infoWind !== null) {
+      console.log('closeWindow2');
+      this.apiService.infoWind.close();
     }
-    this.infoWind = data;
+    this.apiService.infoWind = null;
+    console.log('closeWindow: nollattu infowind');
   }
-  iconUrler (point) {
+/*
+  getRouteHere = (destination) => {
+    this.closeWindow();
+    this.apiService.getTransportRoute(destination, 'transit');
+  }
+  */
+
+  openIW = (data) => {
+    console.log(this);
+      console.log('openIW:' + this.apiService.infoWind);
+      console.log('openIW:' + data);
+    if (this.apiService.infoWind !== null) {
+      console.log('openIW closing window');
+      this.apiService.infoWind.close();
+    }
+    console.log('openIW setting data');
+    this.apiService.infoWind = data;
+    console.log(this.apiService.infoWind);
+  }
+
+  iconUrler = (point) => {
         if (point.type_id.length > 1) {
           return './assets/marker-icons/000.png';
         } else {

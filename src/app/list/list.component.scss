@@ -6,7 +6,10 @@
     background-color: white;
     color:$main-green-darker;
     padding-top:0!important;
-
+  }
+  li{
+    padding: 5px 5px 5px 10px;
+    border-radius: 15px;
   }
 
   button {
@@ -14,6 +17,7 @@
     background-color: $main-blue;
   }
 }
+
 .list{
   margin: 0;
   padding: 30px;
@@ -27,6 +31,9 @@ mat-card#list.mat-card{
   padding-top:0!important;
   mat-card-title{
     padding-top:15px!important;
+  }
+  mat-expansion-panel{
+    margin-bottom:10px;
   }
 }
 
@@ -51,9 +58,21 @@ mat-card#list.mat-card{
 }
 
 .remove{
+  float: right;
   color: $main-blue;
+  position: relative;
+  padding-right:7px;
+  bottom:2px;
 }
+
 .articleIsMobiletrue{
+  width: 80%;
+  position: fixed;
+  bottom: 0;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
   mat-form-field{
     padding-top: 15px;
     width:100%!important;
@@ -67,11 +86,16 @@ mat-card#list.mat-card{
     background-color: white !important;
     color: $main-blue !important;
     border: none !important;
-    
+
     padding: 15px;
   }
   #deleteButton{
     visibility: hidden;
+  }
+  #mobileSend {
+    width: 94%;
+    left: 3%;
+    margin:auto;
   }
 }
 
@@ -94,44 +118,4 @@ mat-card#list.mat-card{
 @keyframes slideIn {
     from {left: -400px}
     to {left: 0px}
-}
-
-@media only screen and (max-width: 500px) {
-  .showed {
-    left: 0% !important;
-    bottom: 0 !important;
-    -webkit-animation-name: slideInBottom !important;
-    -webkit-animation-duration: 1.5s !important;
-    animation-name: slideInBottom !important;
-    animation-duration: 1.5s !important;
-  }
-
-  .hidden{
-    left: 0% !important;
-      bottom: -400px !important;
-      -webkit-animation-name: slideOutBottom !important;
-      -webkit-animation-duration: 1.5s !important;
-      animation-name: slideOutBottom !important;
-      animation-duration: 1.5s !important;
-  }
-
-  @-webkit-keyframes slideOutBottom {
-      from {bottom: 0px}
-      to {bottom: -400px}
-  }
-
-  @keyframes slideOutBottom {
-      from {bottom: 0px}
-      to {bottom: -400px}
-  }
-
-  @-webkit-keyframes slideInBottom {
-      from {bottom: -400px}
-      to {bottom: 0px}
-  }
-
-  @keyframes slideInBottom {
-      from {bottom: -400px}
-      to {bottom: 0px}
-  }
 }

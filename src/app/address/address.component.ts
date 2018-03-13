@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiservicesService } from '../services/apiservices.service';
 import {FormControl} from '@angular/forms';
+import {MapComponent} from '../map/map.component';
 
 @Component({
   selector: 'app-address',
@@ -12,7 +13,7 @@ export class AddressComponent implements OnInit {
   address = '';
   options = [];
   data;
-  constructor(public apiService: ApiservicesService) { }
+  constructor(public apiService: ApiservicesService, public map: MapComponent) { }
 
   ngOnInit() {
   }
@@ -26,8 +27,8 @@ export class AddressComponent implements OnInit {
   }
 
   changeAddress = () => {
-   console.log(this.address);
-   this.apiService.getAddressCoordinates(this.address);
+      this.map.closeWindow();
+      this.apiService.getAddressCoordinates(this.address);
   }
 
   autocompleteSearch = () => {

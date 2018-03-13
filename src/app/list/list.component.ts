@@ -31,10 +31,7 @@ export class ListComponent implements OnInit {
       list.push(this.listService.nameToType(array.type));
     }
     this.apiService.getWasteByRecycleList(list);*/
-    if (this.map.infoWind) {
-        this.map.infoWind.close();
-        this.map.infoWind = null;
-    }
+    this.map.closeWindow();
     this.apiService.getRecyclingPoints();
   }
 

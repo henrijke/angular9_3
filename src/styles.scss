@@ -11,6 +11,7 @@ $main-blue-lighter: #1A8A6D;
   background-color: $color;
   border-radius: 15px;
   padding:5px;
+  padding-left:10px;
   color:white;
 }
 .color_100{
@@ -72,7 +73,7 @@ $main-blue-lighter: #1A8A6D;
 }
 
 .no-style{
-list-style-type: none;
+  list-style-type: none;
 }
 
 html, body {
@@ -80,6 +81,28 @@ html, body {
     font-family: 'Raleway', sans-serif;
 }
 
-.pointer{
+.recyclingPointWindow {
+  max-width: 300px;
+}
+
+.hover:hover {
+  font-size:110%;
+  background-color: $main-blue;
+  color:white;
+  .remove{
+    color: white;
+
+  }
+}
+.icon-helper{
+  position: relative;
+  top:12px;
+}
+
+.mat-card {
+  padding-top: 12px !important;
+  padding-bottom: 0 !important;
+}
+.pointer {
     cursor:pointer;
 }

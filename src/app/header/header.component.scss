@@ -1,5 +1,39 @@
 @import "../../styles";
 
+#header {
+   mat-toolbar-row {
+     form {
+
+       width: 100%;
+       padding: 10px 20px 10px 0;
+
+        button {
+          position: fixed;
+          width: 100%;
+          top: 70px;
+          left: 0;
+          width: 100%;
+        }
+
+        mat-form-field {
+          padding-top: 10px;
+          width: 100%;
+
+            input {
+              width: 100%;
+            }
+
+        }
+
+     }
+
+   }
+}
+
+#logo {
+  height:60%;
+  width: auto;
+}
 .header-toolbar {
   background-color: $main-green;
   color: white;
@@ -10,40 +44,6 @@
   button {
     background-color: $main-blue;
   }
-
-  #noMobileForm {
-    padding-top: 5px;
-    background-color: white;
-    text-align: center;
-
-    padding-left: 20px;
-    padding-right: 20px;
-    // width: 20%;
-
-    position: fixed;
-    top: 100px;
-    left: 40%;
-    border-radius: 10px;
-  }
-
-  #noMobileField {
-    width: 80%;
-  }
-
-}
-
-.headerMobile{}
-.desktop-header{
-}
-
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
 }
 
 .example-spacer {
